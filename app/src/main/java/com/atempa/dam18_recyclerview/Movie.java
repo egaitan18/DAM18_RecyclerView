@@ -46,4 +46,13 @@ public class Movie {
     public void setRelase(String relase) {
         this.relase = relase;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", director='" + director + '\'' +
+                ", relase='" + relase + '\'' +
+                '}';
+    }
 }
