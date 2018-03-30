@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView listView;
-    private MyArrayAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
     private MyArrayAdapter.MovieItemListener movieItemListener = new MyArrayAdapter.MovieItemListener() {
         @Override
         public void onMovieClick(Movie movie) {
@@ -31,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (RecyclerView) findViewById(R.id.listView);
+        RecyclerView listView = (RecyclerView) findViewById(R.id.listView);
         // Create an adapter
-        adapter = new MyArrayAdapter(movieItemListener);
-        layoutManager = new LinearLayoutManager(this);
+        MyArrayAdapter adapter = new MyArrayAdapter(movieItemListener);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
 
         listView.setAdapter(adapter);
         listView.setLayoutManager(layoutManager);
