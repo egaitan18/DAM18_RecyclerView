@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DAM18_RecyclerView</string>
+    <string name="item_title">Title</string>
+    <string name="item_desc">Description</string>
 </resources>
