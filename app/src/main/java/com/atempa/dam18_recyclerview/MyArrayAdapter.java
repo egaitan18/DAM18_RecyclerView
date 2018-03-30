@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,8 @@ public class MyArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         MovieHolder movieHolder = (MovieHolder) holder;
         movieHolder.titleTextView.setText(movie.getTitle());
         movieHolder.descriptionTextView.setText(movie.getDescription());
+
+        Picasso.get().load(movie.getPoster()).placeholder(R.mipmap.ic_launcher).into(movieHolder.posterImageView);
     }
 
     @Override
