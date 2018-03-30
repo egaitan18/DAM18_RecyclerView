@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/text_title"
         android:layout_width="255dp"
-        android:layout_height="30dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -43,7 +43,7 @@
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/item_desc"
         android:textColor="@color/colorSecondaryText"
         app:layout_constraintEnd_toEndOf="parent"
