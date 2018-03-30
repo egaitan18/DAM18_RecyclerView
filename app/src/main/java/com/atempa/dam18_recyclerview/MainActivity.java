@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView listView;
     private MyArrayAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private MyArrayAdapter.MovieItemListener movieItemListener = new MyArrayAdapter.MovieItemListener() {
+        @Override
+        public void onMovieClick(Movie movie) {
+            Toast.makeText(getApplicationContext(), movie.toString(), Toast.LENGTH_LONG).show();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (RecyclerView) findViewById(R.id.listView);
         // Create an adapter
-        adapter = new MyArrayAdapter();
+        adapter = new MyArrayAdapter(movieItemListener);
         layoutManager = new LinearLayoutManager(this);
 
         listView.setAdapter(adapter);
@@ -49,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 movie.setTitle(movies.getJSONObject(i).getString("title"));
                 movie.setDescription(movies.getJSONObject(i).getString("description"));
                 movie.setPoster(movies.getJSONObject(i).getString("poster"));
+                movie.setDirector(movies.getJSONObject(i).getString("director"));
+                movie.setRelase(movies.getJSONObject(i).getString("release"));
                 movieList.add(movie);
             }
 

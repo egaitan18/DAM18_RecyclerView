@@ -16,9 +16,11 @@ import java.util.List;
 
 public class MyArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Movie> mDataSource;
+    private MovieItemListener itemListener;
 
-    public MyArrayAdapter() {
+    public MyArrayAdapter(MovieItemListener movieItemListener) {
         mDataSource = new ArrayList<>();
+        itemListener = movieItemListener;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class MyArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         view = inflater.inflate(R.layout.list_item_movie, parent, false);
 
         // Return a new holder instance
-        return new MovieHolder(view);
+        return new MovieHolder(view, itemListener);
     }
 
     @Override
@@ -62,17 +64,31 @@ public class MyArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         notifyDataSetChanged();
     }
 
-    public class MovieHolder extends RecyclerView.ViewHolder {
+    public class MovieHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView titleTextView;
         private TextView descriptionTextView;
         private ImageView posterImageView;
 
-        public MovieHolder(View itemView) {
-            super(itemView);
+        private MovieItemListener itemListener;
 
+        public MovieHolder(View itemView, MovieItemListener listener) {
+            super(itemView);
             titleTextView = (TextView) itemView.findViewById(R.id.text_title);
             descriptionTextView = (TextView) itemView.findViewById(R.id.text_description);
             posterImageView = (ImageView) itemView.findViewById(R.id.image_poster);
+            itemListener = listener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Movie movie = getItem(position);
+            itemListener.onMovieClick(movie);
+        }
+    }
+
+    public interface MovieItemListener {
+        void onMovieClick(Movie movie);
     }
 }
