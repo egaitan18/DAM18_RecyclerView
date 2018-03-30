@@ -2,7 +2,10 @@ package com.atempa.dam18_recyclerview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -22,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_1, films);
         // Bind listview with adapter
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                Toast.makeText(getBaseContext(), "Selected item " + item, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
