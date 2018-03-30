@@ -3,7 +3,8 @@ package com.atempa.dam18_recyclerview;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,20 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ListView listView;
+    private RecyclerView listView;
     private MyArrayAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.listView);
-        // Build a dataset
-        List<Movie> movieList = getMovies();
+        listView = (RecyclerView) findViewById(R.id.listView);
         // Create an adapter
-        adapter = new MyArrayAdapter(this, movieList);
+        adapter = new MyArrayAdapter();
+        layoutManager = new LinearLayoutManager(this);
+
         listView.setAdapter(adapter);
+        listView.setLayoutManager(layoutManager);
+
+        adapter.addData(getMovies());
     }
 
     private List<Movie> getMovies() {
