@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 Movie movie = new Movie();
                 movie.setTitle(movies.getJSONObject(i).getString("title"));
                 movie.setDescription(movies.getJSONObject(i).getString("description"));
+                movie.setPoster(movies.getJSONObject(i).getString("poster"));
                 movieList.add(movie);
             }
 

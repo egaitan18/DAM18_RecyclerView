@@ -42,7 +42,10 @@ public class MyArrayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         movieHolder.titleTextView.setText(movie.getTitle());
         movieHolder.descriptionTextView.setText(movie.getDescription());
 
-        Picasso.get().load(movie.getPoster()).placeholder(R.mipmap.ic_launcher).into(movieHolder.posterImageView);
+        Picasso.get()
+               .load(movie.getPoster())
+               .placeholder(R.mipmap.ic_launcher)
+               .into(movieHolder.posterImageView);
     }
 
     @Override
