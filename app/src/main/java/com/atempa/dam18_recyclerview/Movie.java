@@ -5,7 +5,7 @@ public class Movie {
     private String description;
     private String director;
     private String poster;
-    private String relase;
+    private String release;
 
     public String getTitle() {
         return title;
@@ -39,12 +39,12 @@ public class Movie {
         this.poster = poster;
     }
 
-    public String getRelase() {
-        return relase;
+    public String getRelease() {
+        return release;
     }
 
-    public void setRelase(String relase) {
-        this.relase = relase;
+    public void setRelease(String release) {
+        this.release = release;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Movie {
         return "Movie{" +
                 "title='" + title + '\'' +
                 ", director='" + director + '\'' +
-                ", relase='" + relase + '\'' +
+                ", release='" + release + '\'' +
                 '}';
     }
 }

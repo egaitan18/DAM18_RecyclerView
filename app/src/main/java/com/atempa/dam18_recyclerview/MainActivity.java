@@ -1,6 +1,7 @@
 package com.atempa.dam18_recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,7 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private MyArrayAdapter.MovieItemListener movieItemListener = new MyArrayAdapter.MovieItemListener() {
         @Override
         public void onMovieClick(Movie movie) {
-            Toast.makeText(getApplicationContext(), movie.toString(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getBaseContext(), MovieDetailActivity.class);
+            intent.putExtra("title", movie.getTitle());
+            intent.putExtra("description", movie.getDescription());
+            intent.putExtra("poster", movie.getPoster());
+            intent.putExtra("director", movie.getDirector());
+            intent.putExtra("release", movie.getRelease());
+            startActivity(intent);
         }
     };
 
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 movie.setDescription(movies.getJSONObject(i).getString("description"));
                 movie.setPoster(movies.getJSONObject(i).getString("poster"));
                 movie.setDirector(movies.getJSONObject(i).getString("director"));
-                movie.setRelase(movies.getJSONObject(i).getString("release"));
+                movie.setRelease(movies.getJSONObject(i).getString("release"));
                 movieList.add(movie);
             }
 
